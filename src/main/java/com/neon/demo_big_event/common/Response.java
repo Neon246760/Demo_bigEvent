@@ -8,32 +8,72 @@ public class Response<T> {
     private String message;
     private T data;
 
+    // 无参构造函数 - 初始化timestamp
     public Response() {
         this.timestamp = LocalDateTime.now();
     }
 
-    public static <T> Response<T> success(T data) {
-        Response<T> response = new Response<>();
-        response.setCode(0);
-        response.setMessage("操作成功！");
-        response.setData(data);
+    // 有参构造函数 - 初始化timestamp
+    public Response(int code, String message, T data) {
+        this.timestamp = LocalDateTime.now(); // 添加这行
+        this.code = code;
+        this.message = message;
+        this.data = data;
+    }
 
-        return response;
+    // 静态方法
+    public static <T> Response<T> success() {
+        return new Response<T>(0, "操作成功", null);
+    }
+
+    public static <T> Response<T> success(T data) {
+        return new Response<>(0, "操作成功", data);
     }
 
     public static <T> Response<T> error(String message) {
-        Response<T> response = new Response<>();
-        response.setCode(-1);
-        response.setMessage(message);
-        return response;
+        return new Response<>(-1, message, null);
     }
 
-    public LocalDateTime getTimestamp() { return this.timestamp; }
-    public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
-    public int getCode() { return this.code; }
-    public void setCode(int code) { this.code = code; }
-    public String getMessage() { return this.message; }
-    public void setMessage(String message) { this.message = message;}
-    public T getData() { return this.data; }
-    public void setData(T data) { this.data = data; }
+    // Getter和Setter方法
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "Response{" +
+                "timestamp=" + timestamp +
+                ", code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }
