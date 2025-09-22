@@ -21,7 +21,7 @@ public class UserService {
     public User createUser(User u) {
         int passwordLength = u.getPassword().length();
         if (passwordLength > 16 || passwordLength < 5) {
-            throw new IllegalArgumentException("用户名必须在5-16位之间");
+            throw new IllegalArgumentException("密码必须在5-16位之间");
         }
         u.setPassword(Md5Util.getMD5String(u.getPassword()));
         return userRepository.save(u);

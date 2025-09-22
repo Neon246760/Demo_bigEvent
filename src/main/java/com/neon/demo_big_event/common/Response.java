@@ -12,7 +12,7 @@ public class Response<T> {
         this.timestamp = LocalDateTime.now();
     }
 
-    public Response<T> success(T data) {
+    public static <T> Response<T> success(T data) {
         Response<T> response = new Response<>();
         response.setCode(0);
         response.setMessage("操作成功！");
@@ -21,7 +21,7 @@ public class Response<T> {
         return response;
     }
 
-    public Response<T> error(String message) {
+    public static <T> Response<T> error(String message) {
         Response<T> response = new Response<>();
         response.setCode(-1);
         response.setMessage(message);

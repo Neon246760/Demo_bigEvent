@@ -21,11 +21,11 @@ public class UserController {
     public Response<User> register(@RequestBody User u) {
         // 查询用户
         if (userService.findByUserName(u).isPresent()) {  // 用户名已存在
-            return new Response<User>().error("用户名已存在");
+            return Response.error("用户名已存在");
         }
     
         // 用户名没有占用，注册
         User createdUser = userService.createUser(u);
-        return new Response<User>().success(createdUser);
+        return Response.success(createdUser);
     }
 }
