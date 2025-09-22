@@ -12,11 +12,12 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 20)
-    // @Pattern(regexp = "^\\S{5,16}$")
+    @NotBlank(message = "用户名不能为空")
+    @Size(min = 5, max = 16, message = "用户名长度必须在5-16位之间")
+    @Pattern(regexp = "^[a-zA-Z0-9_]+$", message = "用户名只能包含字母、数字和下划线")
     private String username;
 
-    @Column(length = 32)
-    // @Pattern(regexp = "^\\S{5,16}$")
+    @Column(length = 60)
     private String password;
 
     @Column(length = 10)

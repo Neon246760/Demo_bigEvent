@@ -1,6 +1,7 @@
 package com.neon.demo_big_event.controller;
 
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -8,6 +9,7 @@ import com.neon.demo_big_event.common.Response;
 import com.neon.demo_big_event.entity.User;
 import com.neon.demo_big_event.service.UserService;
 
+@Valid
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = "*")
