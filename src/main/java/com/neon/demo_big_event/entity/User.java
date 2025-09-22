@@ -12,11 +12,11 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 20)
-    @Pattern(regexp = "^\\S{5,16}$")
+    // @Pattern(regexp = "^\\S{5,16}$")
     private String username;
 
     @Column(length = 32)
-    @Pattern(regexp = "^\\S{5,16}$")
+    // @Pattern(regexp = "^\\S{5,16}$")
     private String password;
 
     @Column(length = 10)
