@@ -1,6 +1,9 @@
 package com.neon.demo_big_event.entity;
 
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
@@ -17,6 +20,7 @@ public class User {
     @Pattern(regexp = "^[a-zA-Z0-9_]+$", message = "用户名只能包含字母、数字和下划线")
     private String username;
 
+    @JsonIgnore
     @Column(length = 60)
     private String password;
 
