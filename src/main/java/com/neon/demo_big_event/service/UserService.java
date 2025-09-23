@@ -22,6 +22,8 @@ public class UserService {
             throw new IllegalArgumentException("密码必须在5-16位之间");
         }
         u.setPassword(Md5Util.getMD5String(u.getPassword()));
+        // save方法会根据实体类的主键(通常是@Id注解标记的字段)来决定是执行插入还是更新操作
+        // 如果主键为null则插入新记录,如果主键已存在则更新该记录
         return userRepository.save(u);
     }
 }
