@@ -1,7 +1,5 @@
 package com.neon.demo_big_event.common;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
